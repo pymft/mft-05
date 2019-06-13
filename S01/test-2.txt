@@ -1,0 +1,1 @@
+hello from file text-2.txt
