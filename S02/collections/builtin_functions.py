@@ -1,0 +1,4 @@
+len
+sum
+max
+min

@@ -7,6 +7,7 @@ number = 100
 # float
 value = 12.3456789   # float
 
+type(value)
 new_integer = int(value)
 new_float = float(number)
 
