@@ -1,6 +1,6 @@
-n = 5
-fact = 1
+n = 10
 
+fact = 1
 i = 0
 
 while i < n:
