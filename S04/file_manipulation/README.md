@@ -6,5 +6,5 @@
 | `w`   |  write  |
 | `a`   |  append  |
 | `r+`   |  read + write |
-| `w+`   |  read + write |
+| `w+`   |  write + read |
 
