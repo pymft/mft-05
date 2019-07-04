@@ -1,0 +1,1 @@
+![image](./static/img/factorial.png)
