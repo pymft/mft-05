@@ -4,4 +4,4 @@ def say_hello():
 
 res = say_hello()
 print(res)
-print(())say_hello
+print(say_hello())
