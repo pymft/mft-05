@@ -17,5 +17,6 @@ def login():
 def greeting(name=""):
     return "Hello " + name
 
+# greeting = app.route('/greeting/<name>')(greeting)
 
 app.run(port=8000)
