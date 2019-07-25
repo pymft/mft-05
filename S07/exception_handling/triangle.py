@@ -8,3 +8,5 @@ def type_of_triangle(a, b, c):
 
     else:
 
+
+is_triangle("hello", 10, 20)

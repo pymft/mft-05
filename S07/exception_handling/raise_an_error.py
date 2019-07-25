@@ -1,7 +1,17 @@
+class InvalidTypeOfFactorialError(TypeError):
+    pass
+
+
+class NegativeValueOfFactorialError(ValueError):
+    pass
+
+
 def fact(n):
     # if not type(n) == int:
     if not isinstance(n, int):
-        raise TypeError(str(type(n).__name__) + " is an invalid type")
+        raise InvalidTypeOfFactorialError("hey dude")
+    if n < 0:
+        raise NegativeValueOfFactorialError("negative int value is not valid bro!")
     out = 1
     while n > 0:
         out = out * n
@@ -9,7 +19,11 @@ def fact(n):
     return out
 
 
+# print(fact(-100))
+
 try:
-    print(fact("hello"))
-except TypeError as e:
-    print(e.args)
+    print(fact(-100))
+except InvalidTypeOfFactorialError as e:
+    print("type e factorial is not valid", e.args   )
+except NegativeValueOfFactorialError as e:
+    print("negative value is not valid, dude!", e.args)
