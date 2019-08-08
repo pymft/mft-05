@@ -1,10 +1,12 @@
+from . import base
 
-class Circle(GenericGeometry):
+
+class Circle(base.GenericGeometry):
     def __init__(self, r):
         self.radius = r
 
 
-class Paralleogram(GenericGeometry):
+class Paralleogram(base.GenericGeometry):
     def __init__(self, a, b, alpha):
         self.a = a
         self.b = b

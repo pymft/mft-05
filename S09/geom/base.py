@@ -1,3 +1,6 @@
+from . import features
+
+
 class GenericGeometry:
-    area = Area()
-    perimeter = Perimeter()
+    area = features.Area()
+    perimeter = features.Perimeter()
