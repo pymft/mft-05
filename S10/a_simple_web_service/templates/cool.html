@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            <table class="table table-striped">
+            <tr>
+                <td>weight</td>
+                <td>
+                    <input name="w">
+                </td>
+            </tr>
+
+            <tr>
+                <td>height</td>
+                <td>
+                    <input name="h">
+                </td>
+            </tr>
+
+            <tr>
+                {% if bmi %}
+                    {% if bmi > 30 %}
+                    <td style="background:red">
+                        {{ bmi }}
+                    </td>
+                    {% elif bmi > 25 %}
+                    <td style="background:green">
+                        {{ bmi }}
+                    </td>
+                    {% else %}
+                    <td style="background:yellow">
+                        {{ bmi }}
+                    </td>
+                    {% endif %}
+                {% endif %}
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</body>
+</html>

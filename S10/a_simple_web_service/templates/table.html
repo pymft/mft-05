@@ -1,0 +1,18 @@
+<table width=100%>
+    {%  for i in range(rows)  %}
+    <tr>
+        {%  for j in range(cols)  %}
+            {% if (i * j) % 2 == 0 %}
+                <td style="color:red">
+            {% else %}
+                <td style="color:green">
+            {% endif %}
+                {{ i * j }}
+            </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+
+
