@@ -43,9 +43,7 @@
                         {{ bmi }}
                     </td>
                     {% else %}
-                    <td style="background:yellow">
-                        {{ bmi }}
-                    </td>
+                    <td style="background:yellow">{{ bmi }}</td>
                     {% endif %}
                 {% endif %}
                 <td>
@@ -66,9 +64,9 @@
                     <th>height</th>
                     <th>bmi</th>
                 </tr>
-                {% for rec in recs %}
+                {% for row in recs %}
                     <tr>
-                        {% for data in rec %}
+                        {% for data in row %}
                             <td> {{ data }} </td>
                         {% endfor %}
                     </tr>

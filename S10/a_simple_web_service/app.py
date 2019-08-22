@@ -3,48 +3,33 @@ from flask import Flask, render_template, request
 
 app = Flask("my-app")
 
-#
-# @app.route("/")
-# def index():
-#     return render_template("main.html")
-#
-#
-# @app.route("/login/<name>/<int:var>")
-# def login_page(name, var):
-#     return render_template("login.html", name=name, var=var)
-#
-#
-# @app.route("/table/<int:cols>/<int:rows>")
-# def table(cols, rows):
-#     return render_template("table.html", rows=rows, cols=cols)
 
 def create_db():
-    conn = sqlite3.connect("my-db.sqlite")
-    conn.execute("""
-    CREATE TABLE IF NOT EXISTS records (
-      id INTEGER PRIMARY KEY AUTOINCREMENT ,
-      username TEXT NOT NULL, 
-      weight REAL,
-      height REAL
-    );""")
+    with sqlite3.connect("my-db.sqlite") as conn:
+        conn.execute("""
+        CREATE TABLE IF NOT EXISTS records (
+          id INTEGER PRIMARY KEY AUTOINCREMENT ,
+          username TEXT NOT NULL, 
+          weight REAL,
+          height REAL
+        );""")
 
-    conn.close()
 
 def insert_data(username, weight, height):
-    conn = sqlite3.connect("my-db.sqlite")
-    conn.execute(f"""
-    INSERT INTO records
-      (username, weight, height) VALUES 
-      ("{username}", {weight}, {height});
-    """)
-    conn.commit()
+    with sqlite3.connect("my-db.sqlite") as conn:
+        conn.execute(f"""
+        INSERT INTO records
+          (username, weight, height) VALUES 
+          ("{username}", {weight}, {height});
+        """)
+        conn.commit()
 
 
 def get_user_records(username):
-    conn = sqlite3.connect("my-db.sqlite")
-    res = conn.execute(f"""
-        SELECT *, weight/height/height FROM records WHERE username = "{username}";
-    """)
+    with sqlite3.connect("my-db.sqlite") as conn:
+        res = conn.execute(f"""
+            SELECT *, weight/height/height FROM records WHERE username = "{username}";
+        """)
     return list(res)
 
 
