@@ -23,9 +23,14 @@ def cool():
     if request.method == 'GET':
         return render_template("cool.html")
     else:
+        username = float(request.form['username'])
         weight = float(request.form['w'])
         height = float(request.form['h'])
         bmi = weight / height ** 2
+
+
+
         return render_template("cool.html", bmi=bmi)
+
 
 app.run()
