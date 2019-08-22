@@ -2,5 +2,5 @@ from . import features
 
 
 class GenericGeometry:
-    area = features.Area()
+    area = features.Area(),
     perimeter = features.Perimeter()

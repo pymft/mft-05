@@ -1,10 +1,16 @@
+class Dimension:
+    def __init__(self, val):
+        if not isinstance(val, (int, float)):
+            raise ValueError
+        self.val = val
+
+
 class Vector:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def __init__(self, *args):
+        self.dims = [Dimension(d) for d in args]
 
     def length(self):
-        return (self.x ** 2 + self.y ** 2) ** 0.5
+        return (sum([d.val ** 2 for d in self.dims])) ** 0.5
 
 
 v1 = Vector(4, 3)

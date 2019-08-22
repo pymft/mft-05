@@ -36,7 +36,8 @@ def get_user_records(username):
 @app.route("/cool", methods=["GET", "POST"])
 def cool():
     if request.method == 'GET':
-        return render_template("cool.html")
+
+       return render_template("cool.html")
     else:
         username = request.form['username']
         weight = float(request.form['w'])

@@ -26,17 +26,17 @@
 
 class Name:
     def __get__(self, instance, owner):
-        return instance.__name
+        return instance._name
 
     def __set__(self, instance, value):
-        instance.__name = value
+        instance._name = value
 
 
 class Person:
     name = Name()
 
     def __init__(self, name):
-        self.__name = name
+        self._name = name
 
 
 
