@@ -21,3 +21,4 @@ INSERT INTO student
 """)
 
 conn.commit()
+

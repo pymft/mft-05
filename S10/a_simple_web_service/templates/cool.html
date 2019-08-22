@@ -54,6 +54,23 @@
             </tr>
         </table>
         </form>
+        {% if recs %}
+            <table>
+                <tr>
+                    <td>id</td>
+                    <td>username</td>
+                    <td>weight</td>
+                    <td>height</td>
+                </tr>
+                {% for rec in recs %}
+                    <tr>
+                        {% for data in rec %}
+                            <td> {{ data }} </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
     </div>
 </body>
 </html>

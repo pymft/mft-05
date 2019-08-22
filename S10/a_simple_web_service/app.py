@@ -1,3 +1,4 @@
+import sqlite3
 from flask import Flask, render_template, request
 
 app = Flask("my-app")
@@ -17,20 +18,38 @@ app = Flask("my-app")
 # def table(cols, rows):
 #     return render_template("table.html", rows=rows, cols=cols)
 
+def insert_data(username, weight, height):
+    conn = sqlite3.connect("my-db.sqlite")
+    conn.execute(f"""
+    INSERT INTO records
+      (username, weight, height) VALUES 
+      ("{username}", {weight}, {height});
+    """)
+    conn.commit()
+
+
+def get_user_records(username):
+    conn = sqlite3.connect("my-db.sqlite")
+    res = conn.execute(f"""
+        SELECT * FROM records WHERE username = "{username}";
+    """)
+    return list(res)
+
 
 @app.route("/cool", methods=["GET", "POST"])
 def cool():
     if request.method == 'GET':
         return render_template("cool.html")
     else:
-        username = float(request.form['username'])
+        username = request.form['username']
         weight = float(request.form['w'])
         height = float(request.form['h'])
         bmi = weight / height ** 2
 
+        insert_data(username, weight, height)
+        recs = get_user_records(username)
 
-
-        return render_template("cool.html", bmi=bmi)
+        return render_template("cool.html", bmi=bmi, recs=recs)
 
 
 app.run()
