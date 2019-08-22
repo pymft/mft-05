@@ -54,13 +54,17 @@
             </tr>
         </table>
         </form>
+
+
         {% if recs %}
-            <table>
+            <h2>History</h2>
+            <table class="table">
                 <tr>
-                    <td>id</td>
-                    <td>username</td>
-                    <td>weight</td>
-                    <td>height</td>
+                    <th>id</th>
+                    <th>username</th>
+                    <th>weight</th>
+                    <th>height</th>
+                    <th>bmi</th>
                 </tr>
                 {% for rec in recs %}
                     <tr>

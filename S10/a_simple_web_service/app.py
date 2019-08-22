@@ -18,6 +18,18 @@ app = Flask("my-app")
 # def table(cols, rows):
 #     return render_template("table.html", rows=rows, cols=cols)
 
+def create_db():
+    conn = sqlite3.connect("my-db.sqlite")
+    conn.execute("""
+    CREATE TABLE IF NOT EXISTS records (
+      id INTEGER PRIMARY KEY AUTOINCREMENT ,
+      username TEXT NOT NULL, 
+      weight REAL,
+      height REAL
+    );""")
+
+    conn.close()
+
 def insert_data(username, weight, height):
     conn = sqlite3.connect("my-db.sqlite")
     conn.execute(f"""
@@ -31,7 +43,7 @@ def insert_data(username, weight, height):
 def get_user_records(username):
     conn = sqlite3.connect("my-db.sqlite")
     res = conn.execute(f"""
-        SELECT * FROM records WHERE username = "{username}";
+        SELECT *, weight/height/height FROM records WHERE username = "{username}";
     """)
     return list(res)
 
@@ -52,4 +64,6 @@ def cool():
         return render_template("cool.html", bmi=bmi, recs=recs)
 
 
-app.run()
+if __name__ == '__main__':
+    create_db()
+    app.run()
